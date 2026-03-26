@@ -1,0 +1,27 @@
+{
+  "accounts": {
+    "ALIGHT": [
+      { "id": 1, "email": "alight.premium1@nauustore.com", "password": "AlightPro2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 2, "email": "alight.premium2@nauustore.com", "password": "AlightVIP2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 3, "email": "alight.lifetime@nauustore.com", "password": "AlightLife2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 4, "email": "alight.pro@nauustore.com", "password": "AlightProMax!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 5, "email": "alight.studio@nauustore.com", "password": "Studio2024!", "used": false, "soldTo": null, "soldAt": null }
+    ],
+    "CAPCUT": [
+      { "id": 1, "email": "capcut.pro1@nauustore.com", "password": "CapCutPro2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 2, "email": "capcut.vip@nauustore.com", "password": "CapCutVIP2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 3, "email": "capcut.premium@nauustore.com", "password": "PremiumCapCut!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 4, "email": "capcut.studio@nauustore.com", "password": "StudioCapCut!", "used": false, "soldTo": null, "soldAt": null }
+    ],
+    "PICSART": [
+      { "id": 1, "email": "picsart.gold@nauustore.com", "password": "PicsArtGold2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 2, "email": "picsart.pro@nauustore.com", "password": "PicsArtPro2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 3, "email": "picsart.vip@nauustore.com", "password": "VIPPicsArt!", "used": false, "soldTo": null, "soldAt": null }
+    ],
+    "VN": [
+      { "id": 1, "email": "vn.pro@nauustore.com", "password": "VNPro2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 2, "email": "vn.vip@nauustore.com", "password": "VNVIP2024!", "used": false, "soldTo": null, "soldAt": null },
+      { "id": 3, "email": "vn.premium@nauustore.com", "password": "PremiumVN!", "used": false, "soldTo": null, "soldAt": null }
+    ]
+  }
+}

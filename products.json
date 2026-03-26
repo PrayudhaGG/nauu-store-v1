@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "code": "ALIGHT",
+      "name": "Alight Motion Premium",
+      "price": 10000,
+      "desc": "Aplikasi editing video profesional dengan fitur lengkap untuk kreator konten",
+      "features": ["Export tanpa watermark", "Semua efek pro unlocked", "Keyframe animation", "Chroma key support", "4K Export"],
+      "imageUrl": "https://files.catbox.moe/0o1hmt.jpg",
+      "icon": "fa-video"
+    },
+    {
+      "code": "CAPCUT",
+      "name": "CapCut Pro",
+      "price": 29000,
+      "desc": "Aplikasi editing video populer dengan template viral dan efek AI canggih",
+      "features": ["Template premium", "Filter eksklusif", "AI efek", "Auto captions", "No watermark"],
+      "imageUrl": "https://files.catbox.moe/qdzv6x.jpg",
+      "icon": "fa-scissors"
+    },
+    {
+      "code": "PICSART",
+      "name": "PicsArt Gold",
+      "price": 27000,
+      "desc": "Aplikasi editing foto dengan tools AI canggih dan koleksi sticker premium",
+      "features": ["Background remover AI", "AI image generator", "Sticker premium", "Font eksklusif", "Filter pro"],
+      "imageUrl": "",
+      "icon": "fa-palette"
+    },
+    {
+      "code": "VN",
+      "name": "VN Video Editor Pro",
+      "price": 22000,
+      "desc": "Aplikasi editing video ringan dengan fitur profesional",
+      "features": ["Editing 4K", "No watermark", "Multi-layer editing", "Chroma key", "Transitions"],
+      "imageUrl": "",
+      "icon": "fa-play"
+    }
+  ]
+}

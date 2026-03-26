@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nauu Store | Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .bg-glow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.1), transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.1), transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; position: relative; z-index: 1; }
+        
+        /* Header */
+        .header {
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+        }
+        
+        .logo h1 {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.8rem;
+        }
+        
+        .btn-header {
+            background: rgba(30, 30, 50, 0.8);
+            padding: 0.6rem 1.3rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+        }
+        
+        .btn-header:hover {
+            background: rgba(255, 20, 147, 0.2);
+            transform: translateY(-2px);
+            border-color: #ff1493;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 20, 147, 0.3);
+            flex-wrap: wrap;
+            padding-bottom: 0.5rem;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-radius: 2rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .tab-btn:hover { color: #ff69b4; }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Cards */
+        .admin-card {
+            background: rgba(20, 15, 35, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 20, 147, 0.2);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-grid input, .form-grid textarea, .form-grid select {
+            background: rgba(15, 10, 25, 0.8);
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            padding: 0.8rem;
+            border-radius: 1rem;
+            color: white;
+            transition: all 0.2s;
+        }
+        
+        .form-grid input:focus, .form-grid textarea:focus {
+            outline: none;
+            border-color: #ff1493;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+        }
+        
+        .btn-action {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255, 20, 147, 0.4); }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); }
+        .btn-warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        
+        /* List Items */
+        .item-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .item-card {
+            background: rgba(15, 10, 25, 0.6);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-left: 3px solid #ff1493;
+            transition: all 0.2s;
+        }
+        
+        .item-card:hover { background: rgba(255, 20, 147, 0.1); }
+        
+        .account-credential {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .badge-available {
+            background: #10b981;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+        }
+        
+        .badge-used {
+            background: #ef4444;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+        }
+        
+        .email-preview {
+            background: rgba(15, 10, 25, 0.6);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+        
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-box {
+            background: linear-gradient(135deg, #1a152a, #0f0a1a);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            background: rgba(15, 10, 25, 0.8);
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            border-radius: 1rem;
+            color: white;
+        }
+        
+        @media (max-width: 640px) {
+            .item-card { flex-direction: column; align-items: stretch; }
+            .form-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+    <div class="header">
+        <div class="logo"><h1><i class="fas fa-crown"></i> Nauu Store Admin</h1></div>
+        <a href="index.html" class="btn-header"><i class="fas fa-store"></i> Kembali ke Toko</a>
+    </div>
+    
+    <div id="adminContent" style="display: none;">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="products"><i class="fas fa-box"></i> Produk</button>
+            <button class="tab-btn" data-tab="accounts"><i class="fas fa-key"></i> Database Akun</button>
+            <button class="tab-btn" data-tab="transactions"><i class="fas fa-history"></i> Transaksi</button>
+            <button class="tab-btn" data-tab="email"><i class="fas fa-envelope"></i> Email Config</button>
+            <button class="tab-btn" data-tab="config"><i class="fas fa-cog"></i> Konfigurasi</button>
+        </div>
+        
+        <!-- Tab Produk -->
+        <div id="productsTab" class="tab-content active">
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-plus-circle"></i> Tambah Produk Baru</h3>
+                <div class="form-grid">
+                    <input type="text" id="productCode" placeholder="Kode (ALIGHT)">
+                    <input type="text" id="productName" placeholder="Nama Produk">
+                    <input type="number" id="productPrice" placeholder="Harga (Rp)">
+                    <input type="text" id="productImageUrl" placeholder="URL Gambar">
+                    <textarea id="productDesc" placeholder="Deskripsi" rows="2"></textarea>
+                    <input type="text" id="productFeatures" placeholder="Fitur (pisah koma)">
+                    <button id="addProductBtn" class="btn-action btn-success">+ Tambah Produk</button>
+                </div>
+            </div>
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-list"></i> Daftar Produk</h3>
+                <div id="productsList" class="item-list"></div>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button id="exportProductsBtn" class="btn-action btn-success"><i class="fas fa-download"></i> Export Produk</button>
+                    <button id="resetDefaultBtn" class="btn-action btn-warning"><i class="fas fa-undo"></i> Reset Default</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab Database Akun -->
+        <div id="accountsTab" class="tab-content">
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-key"></i> Database Akun (Email + Password)</h3>
+                <div class="form-grid">
+                    <select id="accountProductSelect">
+                        <option value="">Pilih Produk</option>
+                    </select>
+                    <textarea id="bulkAccountsInput" placeholder="Masukkan akun (format: email|password)&#10;contoh:&#10;user1@email.com|pass123&#10;user2@email.com|pass456" rows="4"></textarea>
+                    <button id="addBulkAccountsBtn" class="btn-action btn-success"><i class="fas fa-plus-circle"></i> Tambah Massal</button>
+                </div>
+                <div id="accountsList" class="item-list"></div>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button id="exportAccountsBtn" class="btn-action"><i class="fas fa-download"></i> Export Akun</button>
+                    <button id="syncAccountsGithubBtn" class="btn-action"><i class="fab fa-github"></i> Sync dari GitHub</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab Transaksi -->
+        <div id="transactionsTab" class="tab-content">
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-history"></i> Riwayat Transaksi</h3>
+                <div id="transactionsList" class="item-list"></div>
+                <button id="clearTransactionsBtn" class="btn-action btn-danger" style="margin-top: 1rem;"><i class="fas fa-trash"></i> Hapus Semua Transaksi</button>
+            </div>
+        </div>
+        
+        <!-- Tab Email Config -->
+        <div id="emailTab" class="tab-content">
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-envelope"></i> Konfigurasi Email</h3>
+                <div class="form-grid">
+                    <input type="email" id="smtpEmail" placeholder="Email Pengirim (nauustore@gmail.com)">
+                    <input type="password" id="smtpPassword" placeholder="App Password (16 digit)">
+                    <input type="text" id="emailSubject" placeholder="Subject Email" value="🎀 Akun Premium - Nauu Store">
+                    <textarea id="emailTemplate" placeholder="Template Email" rows="4"></textarea>
+                </div>
+                <button id="saveEmailConfigBtn" class="btn-action btn-success"><i class="fas fa-save"></i> Simpan Konfigurasi</button>
+                <button id="testEmailBtn" class="btn-action"><i class="fas fa-paper-plane"></i> Test Kirim Email</button>
+                <div id="emailPreview" class="email-preview" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
+        
+        <!-- Tab Konfigurasi -->
+        <div id="configTab" class="tab-content">
+            <div class="admin-card">
+                <h3 style="margin-bottom: 1rem;"><i class="fas fa-sliders-h"></i> Konfigurasi API</h3>
+                <div class="form-grid">
+                    <input type="text" id="cashifyApiUrl" placeholder="Cashify API URL" value="https://cashify.my.id/api/generate">
+                    <input type="text" id="cashifyCheckUrl" placeholder="Check Status URL" value="https://cashify.my.id/api/generate/check-status">
+                    <input type="text" id="cashifyApiKey" placeholder="Cashify API Key">
+                    <input type="text" id="accountsGithubUrl" placeholder="GitHub Raw URL (accounts.json)">
+                </div>
+                <button id="saveConfigBtn" class="btn-action btn-success">Simpan Konfigurasi</button>
+                <button id="syncFromGithubBtn" class="btn-action"><i class="fab fa-github"></i> Sync Semua dari GitHub</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let CONFIG = {
+        cashifyApiUrl: "https://cashify.my.id/api/generate",
+        cashifyCheckUrl: "https://cashify.my.id/api/generate/check-status",
+        cashifyApiKey: "",
+        accountsGithubUrl: ""
+    };
+    
+    let EMAIL_CONFIG = {
+        smtpEmail: "",
+        smtpPassword: "",
+        emailSubject: "🎀 Akun Premium - Nauu Store",
+        emailTemplate: `Halo {{name}},
+
+🌸 Terima kasih telah berbelanja di Nauu Store!
+
+Berikut adalah akun premium Anda:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Produk: {{product}}
+📧 Email: {{email}}
+🔑 Password: {{password}}
+📅 Tanggal: {{date}}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎀 Cara Login:
+1. Buka aplikasi {{product}}
+2. Klik "Login" atau "Sign In"
+3. Masukkan email dan password di atas
+4. Nikmati fitur premium!
+
+💖 Terima kasih telah berbelanja di Nauu Store!`
+    };
+    
+    let products = [];
+    let accounts = {};
+    let transactions = [];
+    let isLoggedIn = false;
+    const ADMIN_PASSWORD = "admin123";
+    
+    const DEFAULT_PRODUCTS = [
+        { code: "ALIGHT", name: "Alight Motion Premium", price: 35000, desc: "Aplikasi editing video profesional", features: ["Export tanpa watermark", "Efek pro unlocked"], imageUrl: "" },
+        { code: "CAPCUT", name: "CapCut Pro", price: 29000, desc: "Aplikasi editing video populer", features: ["Template premium", "AI efek"], imageUrl: "" },
+        { code: "PICSART", name: "PicsArt Gold", price: 27000, desc: "Aplikasi editing foto", features: ["Background remover", "Sticker premium"], imageUrl: "" }
+    ];
+    
+    const DEFAULT_ACCOUNTS = {
+        "ALIGHT": [
+            { id: 1, email: "alight.premium1@nauustore.com", password: "AlightPro2024!", used: false, soldTo: null, soldAt: null },
+            { id: 2, email: "alight.premium2@nauustore.com", password: "AlightVIP2024!", used: false, soldTo: null, soldAt: null }
+        ],
+        "CAPCUT": [
+            { id: 1, email: "capcut.pro1@nauustore.com", password: "CapCutPro2024!", used: false, soldTo: null, soldAt: null }
+        ],
+        "PICSART": [
+            { id: 1, email: "picsart.gold@nauustore.com", password: "PicsArtGold2024!", used: false, soldTo: null, soldAt: null }
+        ]
+    };
+    
+    function loadData() {
+        const savedConfig = localStorage.getItem('nauu_config');
+        if (savedConfig) { try { Object.assign(CONFIG, JSON.parse(savedConfig)); } catch(e) {} }
+        
+        const savedEmail = localStorage.getItem('nauu_email_config');
+        if (savedEmail) { try { Object.assign(EMAIL_CONFIG, JSON.parse(savedEmail)); } catch(e) {} }
+        
+        const savedProducts = localStorage.getItem('nauu_products');
+        products = savedProducts ? JSON.parse(savedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+        
+        const savedAccounts = localStorage.getItem('nauu_accounts');
+        if (savedAccounts) {
+            accounts = JSON.parse(savedAccounts);
+        } else {
+            accounts = JSON.parse(JSON.stringify(DEFAULT_ACCOUNTS));
+        }
+        
+        const savedTransactions = localStorage.getItem('nauu_transactions');
+        transactions = savedTransactions ? JSON.parse(savedTransactions) : [];
+        
+        document.getElementById('cashifyApiUrl').value = CONFIG.cashifyApiUrl;
+        document.getElementById('cashifyCheckUrl').value = CONFIG.cashifyCheckUrl;
+        document.getElementById('cashifyApiKey').value = CONFIG.cashifyApiKey || '';
+        document.getElementById('accountsGithubUrl').value = CONFIG.accountsGithubUrl || '';
+        
+        document.getElementById('smtpEmail').value = EMAIL_CONFIG.smtpEmail || '';
+        document.getElementById('smtpPassword').value = EMAIL_CONFIG.smtpPassword || '';
+        document.getElementById('emailSubject').value = EMAIL_CONFIG.emailSubject;
+        document.getElementById('emailTemplate').value = EMAIL_CONFIG.emailTemplate;
+        
+        renderProductsList();
+        renderAccountsList();
+        renderTransactionsList();
+        updateProductSelect();
+        updateEmailPreview();
+    }
+    
+    function saveProducts() { localStorage.setItem('nauu_products', JSON.stringify(products)); renderProductsList(); updateProductSelect(); }
+    function saveAccounts() { localStorage.setItem('nauu_accounts', JSON.stringify(accounts)); renderAccountsList(); updateProductSelect(); }
+    function saveTransactions() { localStorage.setItem('nauu_transactions', JSON.stringify(transactions)); renderTransactionsList(); }
+    
+    function saveEmailConfig() {
+        EMAIL_CONFIG.smtpEmail = document.getElementById('smtpEmail').value;
+        EMAIL_CONFIG.smtpPassword = document.getElementById('smtpPassword').value;
+        EMAIL_CONFIG.emailSubject = document.getElementById('emailSubject').value;
+        EMAIL_CONFIG.emailTemplate = document.getElementById('emailTemplate').value;
+        localStorage.setItem('nauu_email_config', JSON.stringify(EMAIL_CONFIG));
+        updateEmailPreview();
+        Swal.fire('Sukses', 'Konfigurasi email disimpan', 'success');
+    }
+    
+    function updateEmailPreview() {
+        const preview = document.getElementById('emailPreview');
+        const template = document.getElementById('emailTemplate').value || EMAIL_CONFIG.emailTemplate;
+        const previewText = template
+            .replace(/{{name}}/g, 'Nauu Customer')
+            .replace(/{{product}}/g, 'Alight Motion Premium')
+            .replace(/{{email}}/g, 'customer@email.com')
+            .replace(/{{password}}/g, 'password123')
+            .replace(/{{date}}/g, new Date().toLocaleString());
+        preview.innerHTML = previewText;
+    }
+    
+    function renderProductsList() {
+        const container = document.getElementById('productsList');
+        if (!products.length) { container.innerHTML = '<div style="text-align:center; padding:2rem;">✨ Belum ada produk ✨</div>'; return; }
+        container.innerHTML = products.map((p, i) => `
+            <div class="item-card">
+                <div>
+                    <strong style="color:#ff69b4;">${escapeHtml(p.name)}</strong> (${p.code})<br>
+                    <small>Rp ${p.price.toLocaleString()} | Stok: ${accounts[p.code]?.filter(a => !a.used).length || 0}</small>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button onclick="editProduct(${i})" class="btn-action" style="padding:0.4rem 1rem;">Edit</button>
+                    <button onclick="deleteProduct(${i})" class="btn-action btn-danger" style="padding:0.4rem 1rem;">Hapus</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    function renderAccountsList() {
+        const container = document.getElementById('accountsList');
+        const selectedProduct = document.getElementById('accountProductSelect')?.value;
+        if (!selectedProduct || !accounts[selectedProduct]) {
+            container.innerHTML = '<div style="text-align:center; padding:2rem;">Pilih produk terlebih dahulu</div>';
+            return;
+        }
+        const productAccounts = accounts[selectedProduct];
+        const available = productAccounts.filter(a => !a.used).length;
+        const sold = productAccounts.filter(a => a.used).length;
+        
+        container.innerHTML = `
+            <div style="margin-bottom: 1rem; padding: 0.5rem; background: rgba(255,20,147,0.1); border-radius: 0.5rem;">
+                📊 Statistik: 💖 Tersedia: ${available} | 💔 Terjual: ${sold} | Total: ${productAccounts.length}
+            </div>
+            ${productAccounts.map(acc => `
+                <div class="item-card">
+                    <div style="flex: 1;">
+                        <div><strong>📧 Email:</strong> <code class="account-credential">${escapeHtml(acc.email)}</code></div>
+                        <div><strong>🔑 Password:</strong> <code class="account-credential">${escapeHtml(acc.password)}</code></div>
+                        ${acc.used ? `<div><small>✅ Terjual ke: ${acc.soldTo || '-'}<br>📅 ${acc.soldAt ? new Date(acc.soldAt).toLocaleString() : '-'}</small></div>` : '<span class="badge-available">✨ Tersedia</span>'}
+                    </div>
+                    ${!acc.used ? `<button onclick="deleteAccount('${selectedProduct}', ${acc.id})" class="btn-action btn-danger" style="padding:0.3rem 0.8rem;">Hapus</button>` : ''}
+                </div>
+            `).join('')}
+        `;
+    }
+    
+    function renderTransactionsList() {
+        const container = document.getElementById('transactionsList');
+        if (!transactions.length) { container.innerHTML = '<div style="text-align:center; padding:2rem;">✨ Belum ada transaksi ✨</div>'; return; }
+        const recent = [...transactions].reverse();
+        container.innerHTML = recent.map(t => `
+            <div class="item-card">
+                <div>
+                    <strong>${escapeHtml(t.product.name)}</strong><br>
+                    <small>${new Date(t.createdAt).toLocaleString()}</small><br>
+                    Pembeli: ${escapeHtml(t.customer.name)} (${t.customer.email})
+                </div>
+                <div style="text-align: right;">
+                    Rp ${t.amount.toLocaleString()}<br>
+                    <code class="account-credential">${t.accountEmail || '-'}</code><br>
+                    <span class="badge-available">✅ Sukses</span>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    function updateProductSelect() {
+        const select = document.getElementById('accountProductSelect');
+        select.innerHTML = '<option value="">-- Pilih Produk --</option>' + products.map(p => `<option value="${p.code}">${p.name} (${p.code})</option>`).join('');
+        select.onchange = () => renderAccountsList();
+    }
+    
+    window.editProduct = function(i) {
+        const p = products[i];
+        Swal.fire({
+            title: 'Edit Produk',
+            html: `
+                <input id="name" class="swal2-input" value="${escapeHtml(p.name)}">
+                <input id="code" class="swal2-input" value="${p.code}">
+                <input id="price" type="number" class="swal2-input" value="${p.price}">
+                <input id="imageUrl" class="swal2-input" value="${p.imageUrl || ''}">
+                <textarea id="desc" class="swal2-textarea" rows="2">${escapeHtml(p.desc || '')}</textarea>
+                <input id="features" class="swal2-input" value="${(p.features || []).join(', ')}">
+            `,
+            confirmButtonText: 'Simpan',
+            preConfirm: () => ({
+                name: document.getElementById('name').value,
+                code: document.getElementById('code').value,
+                price: parseInt(document.getElementById('price').value),
+                imageUrl: document.getElementById('imageUrl').value,
+                desc: document.getElementById('desc').value,
+                features: document.getElementById('features').value.split(',').map(f => f.trim()).filter(f => f)
+            })
+        }).then(result => {
+            if (result.isConfirmed) { Object.assign(p, result.value); saveProducts(); Swal.fire('Sukses', 'Produk diperbarui', 'success'); }
+        });
+    };
+    
+    window.deleteProduct = function(i) {
+        Swal.fire({ title: 'Hapus?', text: `Hapus ${products[i].name}?`, icon: 'warning', showCancelButton: true }).then(r => {
+            if (r.isConfirmed) { products.splice(i, 1); delete accounts[products[i]?.code]; saveProducts(); saveAccounts(); Swal.fire('Terhapus', '', 'success'); }
+        });
+    };
+    
+    window.deleteAccount = function(productCode, accountId) {
+        Swal.fire({ title: 'Hapus akun?', icon: 'warning', showCancelButton: true }).then(r => {
+            if (r.isConfirmed) { accounts[productCode] = accounts[productCode].filter(a => a.id !== accountId); saveAccounts(); Swal.fire('Terhapus', '', 'success'); }
+        });
+    };
+    
+    document.getElementById('addProductBtn')?.addEventListener('click', () => {
+        const code = document.getElementById('productCode').value.toUpperCase();
+        const name = document.getElementById('productName').value;
+        const price = parseInt(document.getElementById('productPrice').value);
+        const imageUrl = document.getElementById('productImageUrl').value;
+        const desc = document.getElementById('productDesc').value;
+        const features = document.getElementById('productFeatures').value.split(',').map(f => f.trim()).filter(f => f);
+        if (!code || !name || isNaN(price)) { Swal.fire('Error', 'Isi kode, nama, dan harga', 'error'); return; }
+        products.push({ code, name, price, desc, features, imageUrl });
+        if (!accounts[code]) accounts[code] = [];
+        saveProducts(); saveAccounts();
+        document.getElementById('productCode').value = ''; document.getElementById('productName').value = ''; document.getElementById('productPrice').value = ''; document.getElementById('productImageUrl').value = ''; document.getElementById('productDesc').value = ''; document.getElementById('productFeatures').value = '';
+        Swal.fire('Berhasil', 'Produk ditambahkan', 'success');
+    });
+    
+    document.getElementById('addBulkAccountsBtn')?.addEventListener('click', () => {
+        const productCode = document.getElementById('accountProductSelect').value;
+        const bulkInput = document.getElementById('bulkAccountsInput').value;
+        if (!productCode) { Swal.fire('Error', 'Pilih produk dulu', 'error'); return; }
+        if (!bulkInput.trim()) { Swal.fire('Error', 'Masukkan akun (format: email|password)', 'error'); return; }
+        
+        const lines = bulkInput.split('\n').filter(l => l.trim());
+        if (!accounts[productCode]) accounts[productCode] = [];
+        const currentIds = accounts[productCode].map(a => a.id);
+        let nextId = Math.max(0, ...currentIds) + 1;
+        
+        lines.forEach(line => {
+            const [email, password] = line.split('|').map(s => s.trim());
+            if (email && password) {
+                accounts[productCode].push({ id: nextId++, email, password, used: false, soldTo: null, soldAt: null });
+            }
+        });
+        saveAccounts();
+        document.getElementById('bulkAccountsInput').value = '';
+        Swal.fire('Berhasil', `${lines.length} akun ditambahkan`, 'success');
+    });
+    
+    document.getElementById('exportProductsBtn')?.addEventListener('click', () => {
+        const data = { products, accounts, config: CONFIG };
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = `nauu_backup.json`; a.click(); URL.revokeObjectURL(url);
+    });
+    
+    document.getElementById('exportAccountsBtn')?.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(accounts, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = `nauu_accounts.json`; a.click(); URL.revokeObjectURL(url);
+    });
+    
+    document.getElementById('resetDefaultBtn')?.addEventListener('click', () => {
+        Swal.fire({ title: 'Reset?', text: 'Semua produk akan direset ke default', icon: 'warning', showCancelButton: true }).then(r => {
+            if (r.isConfirmed) { products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)); accounts = JSON.parse(JSON.stringify(DEFAULT_ACCOUNTS)); saveProducts(); saveAccounts(); Swal.fire('Reset Berhasil', '', 'success'); }
+        });
+    });
+    
+    document.getElementById('clearTransactionsBtn')?.addEventListener('click', () => {
+        Swal.fire({ title: 'Hapus semua transaksi?', icon: 'warning', showCancelButton: true }).then(r => {
+            if (r.isConfirmed) { transactions = []; saveTransactions(); Swal.fire('Terhapus', '', 'success'); }
+        });
+    });
+    
+    document.getElementById('saveConfigBtn')?.addEventListener('click', () => {
+        CONFIG.cashifyApiUrl = document.getElementById('cashifyApiUrl').value;
+        CONFIG.cashifyCheckUrl = document.getElementById('cashifyCheckUrl').value;
+        CONFIG.cashifyApiKey = document.getElementById('cashifyApiKey').value;
+        CONFIG.accountsGithubUrl = document.getElementById('accountsGithubUrl').value;
+        localStorage.setItem('nauu_config', JSON.stringify(CONFIG));
+        Swal.fire('Sukses', 'Konfigurasi disimpan', 'success');
+    });
+    
+    document.getElementById('saveEmailConfigBtn')?.addEventListener('click', saveEmailConfig);
+    document.getElementById('emailTemplate')?.addEventListener('input', updateEmailPreview);
+    
+    document.getElementById('testEmailBtn')?.addEventListener('click', () => {
+        const email = document.getElementById('smtpEmail').value;
+        if (!email) { Swal.fire('Error', 'Masukkan email pengirim dulu', 'error'); return; }
+        Swal.fire({ title: 'Test Email', text: 'Fitur test email akan aktif jika backend SMTP terkonfigurasi', icon: 'info' });
+    });
+    
+    document.getElementById('syncFromGithubBtn')?.addEventListener('click', async () => {
+        const url = CONFIG.accountsGithubUrl;
+        if (!url) { Swal.fire('Error', 'Set GitHub URL dulu', 'error'); return; }
+        Swal.fire({ title: 'Sync...', didOpen: () => Swal.showLoading() });
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('Gagal fetch');
+            const data = await res.json();
+            if (data.accounts) accounts = data.accounts;
+            if (data.products) products = data.products;
+            saveProducts(); saveAccounts();
+            Swal.fire('Sukses', 'Data berhasil disync', 'success');
+        } catch(err) { Swal.fire('Error', err.message, 'error'); }
+    });
+    
+    document.getElementById('syncAccountsGithubBtn')?.addEventListener('click', async () => {
+        const url = CONFIG.accountsGithubUrl;
+        if (!url) { Swal.fire('Error', 'Set GitHub URL dulu', 'error'); return; }
+        Swal.fire({ title: 'Sync akun...', didOpen: () => Swal.showLoading() });
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('Gagal fetch');
+            const data = await res.json();
+            if (data.accounts) accounts = data.accounts;
+            saveAccounts();
+            Swal.fire('Sukses', 'Database akun diperbarui', 'success');
+        } catch(err) { Swal.fire('Error', err.message, 'error'); }
+    });
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(`${tabId}Tab`).classList.add('active');
+            if (tabId === 'accounts') renderAccountsList();
+            if (tabId === 'transactions') renderTransactionsList();
+        });
+    });
+    
+    function showLogin() {
+        const loginHtml = `<div id="loginOverlay" class="login-overlay"><div class="login-box"><i class="fas fa-crown" style="font-size:3rem; color:#ff1493;"></i><h2>Nauu Store Admin</h2><input type="password" id="adminPass" placeholder="Password"><button id="loginBtn" class="btn-action">Login</button><p style="margin-top:1rem;">Default: admin123</p></div></div>`;
+        document.body.insertAdjacentHTML('beforeend', loginHtml);
+        document.getElementById('loginBtn')?.addEventListener('click', () => {
+            if (document.getElementById('adminPass').value === ADMIN_PASSWORD) {
+                isLoggedIn = true; localStorage.setItem('nauu_admin_session', 'true');
+                document.getElementById('loginOverlay')?.remove();
+                document.getElementById('adminContent').style.display = 'block';
+                loadData();
+            } else { Swal.fire('Gagal', 'Password salah', 'error'); }
+        });
+    }
+    
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;'); }
+    
+    if (localStorage.getItem('nauu_admin_session') === 'true') {
+        isLoggedIn = true; document.getElementById('adminContent').style.display = 'block'; loadData();
+    } else { showLogin(); }
+</script>
+</body>
+</html>
