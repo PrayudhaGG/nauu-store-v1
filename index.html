@@ -32,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             100% { transform: translate(-10%, -10%) rotate(5deg); }
         }
 
-        /* Floating Orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -86,7 +84,6 @@
             z-index: 2;
         }
 
-        /* Glassmorphism Header */
         .header {
             background: rgba(10, 10, 20, 0.6);
             backdrop-filter: blur(20px);
@@ -99,7 +96,7 @@
             gap: 1rem;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 20, 147, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 20, 147, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
@@ -131,13 +128,11 @@
             background-clip: text;
             color: transparent;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
 
         .logo p {
             font-size: 0.7rem;
             color: #ffb6c1;
-            letter-spacing: 1px;
         }
 
         .header-buttons {
@@ -152,21 +147,18 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            cursor: pointer;
             transition: all 0.3s;
             border: 1px solid rgba(255, 20, 147, 0.3);
             text-decoration: none;
             color: #fff;
             font-size: 0.9rem;
             font-weight: 500;
-            backdrop-filter: blur(10px);
         }
 
         .btn-header:hover {
             background: rgba(255, 20, 147, 0.2);
             transform: translateY(-2px);
             border-color: #ff1493;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
         }
 
         .btn-header.admin {
@@ -175,7 +167,6 @@
             box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
         }
 
-        /* Stats Cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -195,7 +186,6 @@
         .stat-card:hover {
             border-color: #ff1493;
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
         }
 
         .stat-card i {
@@ -218,7 +208,6 @@
             color: #b0a0c0;
         }
 
-        /* Products Grid */
         .section-title {
             display: flex;
             justify-content: space-between;
@@ -235,11 +224,6 @@
             color: transparent;
         }
 
-        .section-title h2 i {
-            color: #ff69b4;
-            margin-right: 0.5rem;
-        }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -252,7 +236,7 @@
             backdrop-filter: blur(10px);
             border-radius: 1.8rem;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.4s;
             border: 1px solid rgba(255, 20, 147, 0.2);
             position: relative;
         }
@@ -300,7 +284,6 @@
             font-size: 0.7rem;
             font-weight: 600;
             z-index: 2;
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
         .product-info {
@@ -345,15 +328,6 @@
             font-weight: 800;
             color: #ff69b4;
             margin: 0.75rem 0;
-            display: flex;
-            align-items: baseline;
-            gap: 0.3rem;
-        }
-
-        .product-price small {
-            font-size: 0.8rem;
-            color: #b0a0c0;
-            font-weight: 400;
         }
 
         .stock-badge {
@@ -364,7 +338,6 @@
             padding: 0.3rem 0.8rem;
             border-radius: 2rem;
             font-size: 0.7rem;
-            font-weight: 500;
             border: 1px solid rgba(255, 20, 147, 0.3);
         }
 
@@ -380,10 +353,6 @@
             cursor: pointer;
             transition: all 0.3s;
             font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
         }
 
         .btn-buy:hover:not(:disabled) {
@@ -394,10 +363,8 @@
         .btn-buy:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            background: linear-gradient(135deg, #666, #888);
         }
 
-        /* Transaction History */
         .history-section {
             background: rgba(20, 15, 35, 0.4);
             backdrop-filter: blur(10px);
@@ -429,27 +396,14 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             border-left: 3px solid #ff1493;
-            transition: all 0.2s;
         }
 
-        .transaction-item:hover {
-            background: rgba(255, 20, 147, 0.1);
-        }
-
-        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, rgba(255, 20, 147, 0.1), rgba(255, 105, 180, 0.05));
             border-radius: 1.5rem;
             padding: 1.5rem;
             margin-top: 1rem;
             border: 1px solid rgba(255, 20, 147, 0.3);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-        
-        .contact-section:hover {
-            border-color: #ff1493;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.2);
         }
         
         .contact-header {
@@ -467,22 +421,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-        }
-        
-        .contact-icon i {
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .contact-header h3 {
-            font-size: 1.3rem;
-            color: #ff69b4;
-        }
-        
-        .contact-header p {
-            font-size: 0.8rem;
-            color: #b0a0c0;
         }
         
         .contact-buttons {
@@ -503,21 +441,10 @@
             color: white;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
-        }
-        
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
         }
         
         .contact-btn.whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
-        }
-        
-        .contact-btn.whatsapp:hover {
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
         }
         
         .contact-info {
@@ -539,17 +466,6 @@
         
         .contact-info-item i {
             color: #ff69b4;
-            width: 20px;
-        }
-        
-        .contact-info-item a {
-            color: #ffb6c1;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .contact-info-item a:hover {
-            color: #ff69b4;
         }
         
         .response-time {
@@ -560,10 +476,8 @@
             align-items: center;
             gap: 0.5rem;
             font-size: 0.7rem;
-            color: #ffb6c1;
         }
 
-        /* Footer */
         .footer {
             margin-top: 2rem;
             text-align: center;
@@ -581,7 +495,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
             justify-content: center;
             align-items: center;
@@ -595,7 +509,6 @@
             border-radius: 2rem;
             padding: 2rem;
             border: 1px solid rgba(255, 20, 147, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 20, 147, 0.2);
             animation: modalFadeIn 0.3s ease;
         }
 
@@ -650,13 +563,11 @@
             border-radius: 1rem;
             color: white;
             font-size: 0.95rem;
-            transition: all 0.2s;
         }
 
         .form-group input:focus {
             outline: none;
             border-color: #ff1493;
-            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
         }
 
         .form-row {
@@ -689,7 +600,6 @@
             border-color: #ff1493;
             background: rgba(255, 20, 147, 0.2);
             color: #ff69b4;
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
         }
 
         .btn-checkout {
@@ -703,12 +613,10 @@
             cursor: pointer;
             margin-top: 1rem;
             font-size: 1rem;
-            transition: all 0.3s;
         }
 
         .btn-checkout:hover {
             transform: scale(0.98);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
         }
 
         .qris-container {
@@ -725,6 +633,11 @@
             border-radius: 1rem;
         }
 
+        .simulate-payment-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            margin-top: 1rem;
+        }
+
         .credential-box {
             background: rgba(255, 20, 147, 0.1);
             border: 1px solid #ff69b4;
@@ -732,28 +645,12 @@
             padding: 1rem;
             margin: 1rem 0;
             text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .credential-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ff1493, #ff69b4, #ffb6c1);
         }
 
         .credential-box .label {
             color: #ff69b4;
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .credential-box .value {
@@ -776,7 +673,6 @@
             color: #ff69b4;
             cursor: pointer;
             font-size: 0.7rem;
-            transition: all 0.2s;
         }
 
         .copy-btn:hover {
@@ -792,7 +688,6 @@
             .form-row { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-buttons { flex-direction: column; }
-            .contact-btn { justify-content: center; }
         }
     </style>
 </head>
@@ -803,7 +698,6 @@
     <div class="orb orb-3"></div>
 
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="logo">
                 <div class="logo-icon">
@@ -821,7 +715,6 @@
             </div>
         </div>
 
-        <!-- Stats Cards -->
         <div class="stats-grid">
             <div class="stat-card">
                 <i class="fas fa-boxes"></i>
@@ -845,10 +738,9 @@
             </div>
         </div>
 
-        <!-- Products Section -->
         <div class="section-title">
             <h2><i class="fas fa-crown"></i> Premium Apps</h2>
-            <span style="color: #ffb6c1; font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 100% Original License</span>
+            <span style="color: #ffb6c1;"><i class="fas fa-shield-alt"></i> 100% Original</span>
         </div>
         
         <div class="products-grid" id="productsContainer">
@@ -858,7 +750,6 @@
             </div>
         </div>
 
-        <!-- Transaction History -->
         <div class="history-section">
             <h3><i class="fas fa-clock"></i> Riwayat Transaksi</h3>
             <div class="transaction-list" id="historyList">
@@ -866,14 +757,13 @@
             </div>
         </div>
 
-        <!-- Contact CS Section -->
         <div class="contact-section">
             <div class="contact-header">
                 <div class="contact-icon">
                     <i class="fas fa-headset"></i>
                 </div>
                 <div>
-                    <h3><i class="fas fa-heart" style="font-size: 0.9rem;"></i> Customer Support</h3>
+                    <h3>Customer Support</h3>
                     <p>Ada kendala? Kami siap membantu 24/7</p>
                 </div>
             </div>
@@ -893,11 +783,11 @@
             <div class="contact-info">
                 <div class="contact-info-item">
                     <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/6285166413821" target="_blank">+62 851-6641-3821</a>
+                    <a href="https://wa.me/6285166413821" style="color:#ffb6c1;">+62 851-6641-3821</a>
                 </div>
                 <div class="contact-info-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:support@nauustore.com">support@nauustore.com</a>
+                    <span>support@nauustore.com</span>
                 </div>
                 <div class="contact-info-item">
                     <i class="fas fa-clock"></i>
@@ -910,10 +800,9 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <p><i class="fas fa-heart" style="color: #ff1493;"></i> Nauu Store - Premium Apps with Love <i class="fas fa-heart" style="color: #ff1493;"></i></p>
-            <p style="font-size: 0.7rem; margin-top: 0.5rem;">© 2024 Nauu Store. All rights reserved.</p>
+            <p style="font-size: 0.7rem;">© 2024 Nauu Store. All rights reserved.</p>
         </div>
     </div>
 
@@ -948,7 +837,6 @@
                         <div class="payment-method active" data-method="QRIS"><i class="fas fa-qrcode"></i> QRIS</div>
                         <div class="payment-method" data-method="DANA"><i class="fas fa-wallet"></i> DANA</div>
                         <div class="payment-method" data-method="OVO"><i class="fas fa-mobile-alt"></i> OVO</div>
-                        <div class="payment-method" data-method="SHOPEEPAY"><i class="fas fa-shopping-bag"></i> ShopeePay</div>
                     </div>
                     <input type="hidden" id="selectedPaymentMethod" value="QRIS">
                 </div>
@@ -963,10 +851,13 @@
             
             <div id="qrisDisplay" style="display: none;">
                 <div class="qris-container">
-                    <h4><i class="fas fa-qrcode"></i> Scan QRIS</h4>
+                    <h4><i class="fas fa-qrcode"></i> Scan QRIS untuk Membayar</h4>
                     <div id="qrcode"></div>
                     <p id="qrisAmount" style="font-size:1.2rem; font-weight:bold; color:#ff69b4;"></p>
-                    <button id="checkPaymentBtn" class="btn-checkout" style="background:#3b82f6;">
+                    <button id="simulatePaymentBtn" class="btn-checkout simulate-payment-btn">
+                        <i class="fas fa-flask"></i> Simulasi Pembayaran (Demo)
+                    </button>
+                    <button id="checkPaymentBtn" class="btn-checkout" style="background:#3b82f6; margin-top:0.5rem;">
                         <i class="fas fa-sync-alt"></i> Cek Status
                     </button>
                     <div id="paymentStatus" style="margin-top:1rem;"></div>
@@ -992,17 +883,7 @@
     </div>
 
     <script>
-        // ==================== API KONFIGURASI ====================
-        // API Cashify untuk QRIS
-        const API_CONFIG = {
-            // Endpoint API Cashify
-            generateUrl: "https://cashify.my.id/api/generate",
-            checkStatusUrl: "https://cashify.my.id/api/generate/check-status",
-            apiKey: "", // Isi dengan API Key jika diperlukan
-            // Package IDs untuk berbagai e-wallet
-            packageIds: ["id.dana", "id.ovo", "id.gopay", "id.shopeepay"]
-        };
-        
+        // ==================== DATA ====================
         let products = [];
         let accounts = {};
         let transactions = [];
@@ -1010,37 +891,12 @@
         let currentTransaction = null;
         let statusInterval = null;
         
-        // Email Template
-        const EMAIL_TEMPLATE = `Halo {{name}},
-
-🌸 Terima kasih telah berbelanja di Nauu Store!
-
-Berikut adalah akun premium Anda:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✨ Produk: {{product}}
-📧 Email: {{email}}
-🔑 Password: {{password}}
-📅 Tanggal: {{date}}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🎀 Cara Login:
-1. Buka aplikasi {{product}}
-2. Klik "Login" atau "Sign In"
-3. Masukkan email dan password di atas
-4. Nikmati fitur premium!
-
-💖 Terima kasih telah berbelanja di Nauu Store!
-
-📞 Butuh bantuan? Hubungi CS kami:
-WA: +62 851-6641-3821
-Email: support@nauustore.com`;
-        
         // Default Products
         const DEFAULT_PRODUCTS = [
-            { code: "ALIGHT", name: "Alight Motion Premium", price: 35000, desc: "Aplikasi editing video profesional dengan fitur lengkap", features: ["Export tanpa watermark", "Semua efek pro unlocked", "Keyframe animation", "4K Export"], icon: "fa-video" },
-            { code: "CAPCUT", name: "CapCut Pro", price: 29000, desc: "Aplikasi editing video populer dengan template viral", features: ["Template premium", "Filter eksklusif", "AI efek", "Auto captions"], icon: "fa-scissors" },
-            { code: "PICSART", name: "PicsArt Gold", price: 27000, desc: "Aplikasi editing foto dengan tools AI canggih", features: ["Background remover", "Sticker premium", "Font eksklusif", "AI generator"], icon: "fa-palette" },
-            { code: "VN", name: "VN Video Editor Pro", price: 22000, desc: "Aplikasi editing video ringan dengan fitur profesional", features: ["No watermark", "Multi-layer", "Chroma key", "4K editing"], icon: "fa-play" }
+            { code: "ALIGHT", name: "Alight Motion Premium", price: 35000, desc: "Aplikasi editing video profesional", features: ["Export tanpa watermark", "Semua efek pro unlocked", "Keyframe animation"], icon: "fa-video", stock: 3 },
+            { code: "CAPCUT", name: "CapCut Pro", price: 29000, desc: "Aplikasi editing video populer", features: ["Template premium", "Filter eksklusif", "AI efek"], icon: "fa-scissors", stock: 2 },
+            { code: "PICSART", name: "PicsArt Gold", price: 27000, desc: "Aplikasi editing foto", features: ["Background remover", "Sticker premium", "Font eksklusif"], icon: "fa-palette", stock: 2 },
+            { code: "VN", name: "VN Video Editor Pro", price: 22000, desc: "Aplikasi editing video ringan", features: ["No watermark", "Multi-layer", "Chroma key"], icon: "fa-play", stock: 2 }
         ];
         
         // Default Accounts with Email & Password
@@ -1064,126 +920,39 @@ Email: support@nauustore.com`;
             ]
         };
         
-        // ==================== API QRIS FUNCTIONS ====================
-        
-        /**
-         * Generate QRIS menggunakan API Cashify
-         * @param {number} amount - Nominal pembayaran
-         * @returns {Promise} - Response dari API
-         */
-        async function generateQRIS(amount) {
-            const payload = {
-                amount: amount,
-                packageIds: API_CONFIG.packageIds
-            };
-            
-            // Tambahkan API Key jika ada
-            if (API_CONFIG.apiKey) {
-                payload.api_key = API_CONFIG.apiKey;
-            }
-            
-            try {
-                console.log('📤 Generate QRIS:', payload);
-                
-                const response = await fetch(API_CONFIG.generateUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                console.log('📥 QRIS Response:', result);
-                
-                return result;
-            } catch (error) {
-                console.error('❌ Error generate QRIS:', error);
-                throw new Error('Gagal menghubungi server pembayaran');
-            }
-        }
-        
-        /**
-         * Cek status pembayaran QRIS
-         * @param {string} transactionId - ID transaksi
-         * @returns {Promise} - Status pembayaran
-         */
-        async function checkPaymentStatus(transactionId) {
-            try {
-                const url = `${API_CONFIG.checkStatusUrl}?transactionId=${transactionId}`;
-                console.log('🔍 Check status:', url);
-                
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                const result = await response.json();
-                console.log('📊 Status Response:', result);
-                
-                return result;
-            } catch (error) {
-                console.error('❌ Error check status:', error);
-                return { status: 'error', message: error.message };
-            }
-        }
-        
-        /**
-         * Display QRIS di modal
-         * @param {object} data - Data QRIS dari API
-         * @param {number} amount - Nominal pembayaran
-         */
-        function displayQRIS(data, amount) {
-            const qrcodeDiv = document.getElementById('qrcode');
-            qrcodeDiv.innerHTML = '';
-            
-            // Ambil data QRIS dari response
-            const qrString = data.data?.qr_string || data.qr_string;
-            const transactionId = data.data?.transactionId || data.transactionId;
-            const totalAmount = data.data?.totalAmount || data.totalAmount || amount;
-            const uniqueCode = data.data?.uniqueNominal || data.uniqueNominal;
-            
-            if (qrString) {
-                try {
-                    // Generate QR Code
-                    new QRCode(qrcodeDiv, {
-                        text: qrString,
-                        width: 220,
-                        height: 220,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff"
-                    });
-                    document.getElementById('qrisAmount').innerHTML = `Rp ${totalAmount.toLocaleString()}`;
-                } catch(e) {
-                    // Fallback jika QRCode.js error
-                    qrcodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(qrString)}" alt="QR Code">`;
-                }
-                
-                // Simpan transactionId untuk pengecekan status
-                if (transactionId) {
-                    currentTransaction = {
-                        ...currentTransaction,
-                        transactionId: transactionId
-                    };
-                }
-                
-                return transactionId;
-            } else {
-                qrcodeDiv.innerHTML = '<div style="color: #ef4444; padding: 2rem;">❌ Gagal generate QRIS, silakan coba lagi</div>';
-                return null;
-            }
-        }
+        // Email Template
+        const EMAIL_TEMPLATE = `Halo {{name}},
+
+🌸 Terima kasih telah berbelanja di Nauu Store!
+
+Berikut adalah akun premium Anda:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Produk: {{product}}
+📧 Email: {{email}}
+🔑 Password: {{password}}
+📅 Tanggal: {{date}}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎀 Cara Login:
+1. Buka aplikasi {{product}}
+2. Klik "Login" atau "Sign In"
+3. Masukkan email dan password di atas
+4. Nikmati fitur premium!
+
+💖 Terima kasih telah berbelanja di Nauu Store!
+
+📞 Butuh bantuan? Hubungi CS: +62 851-6641-3821`;
         
         // ==================== LOAD DATA ====================
         function loadData() {
-            // Load products from localStorage
             const savedProducts = localStorage.getItem('nauu_products');
-            products = savedProducts ? JSON.parse(savedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+            if (savedProducts) {
+                products = JSON.parse(savedProducts);
+            } else {
+                products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+                updateProductStocks();
+            }
             
-            // Load accounts from localStorage
             const savedAccounts = localStorage.getItem('nauu_accounts');
             if (savedAccounts) {
                 accounts = JSON.parse(savedAccounts);
@@ -1191,7 +960,6 @@ Email: support@nauustore.com`;
                 accounts = JSON.parse(JSON.stringify(DEFAULT_ACCOUNTS));
             }
             
-            // Load transactions from localStorage
             const savedTransactions = localStorage.getItem('nauu_transactions');
             transactions = savedTransactions ? JSON.parse(savedTransactions) : [];
             
@@ -1207,6 +975,7 @@ Email: support@nauustore.com`;
                 const availableAccounts = productAccounts.filter(acc => !acc.used).length;
                 product.stock = availableAccounts;
             });
+            localStorage.setItem('nauu_products', JSON.stringify(products));
         }
         
         function updateStats() {
@@ -1217,7 +986,7 @@ Email: support@nauustore.com`;
             document.getElementById('totalTransactions').innerText = completed;
         }
         
-        // ==================== GET AVAILABLE ACCOUNT ====================
+        // ==================== ACCOUNT FUNCTIONS ====================
         function getAvailableAccount(productCode) {
             const productAccounts = accounts[productCode];
             if (!productAccounts) return null;
@@ -1241,7 +1010,7 @@ Email: support@nauustore.com`;
             return null;
         }
         
-        // ==================== SEND EMAIL ====================
+        // ==================== DELIVERY FUNCTIONS ====================
         async function sendAccountEmail(customerData, product, account) {
             const emailBody = EMAIL_TEMPLATE
                 .replace(/{{name}}/g, customerData.name)
@@ -1253,7 +1022,7 @@ Email: support@nauustore.com`;
             console.log('📧 Email terkirim ke:', customerData.email);
             console.log('📧 Isi Email:', emailBody);
             
-            // Simpan ke localStorage sebagai riwayat email
+            // Simpan ke localStorage
             const emailRecord = {
                 to: customerData.email,
                 product: product.name,
@@ -1268,93 +1037,77 @@ Email: support@nauustore.com`;
             return true;
         }
         
-        // ==================== CHECK PAYMENT AND DELIVER ====================
-        async function checkPaymentAndDeliver(transactionId, customerData, product) {
-            try {
-                const status = await checkPaymentStatus(transactionId);
-                
-                // Cek apakah pembayaran sukses
-                const isPaid = status.status === 'success' || 
-                               status.data?.status === 'paid' || 
-                               status.paid === true;
-                
-                if (isPaid) {
-                    if (statusInterval) clearInterval(statusInterval);
-                    
-                    // Ambil akun yang tersedia
-                    const account = getAvailableAccount(product.code);
-                    if (!account) {
-                        document.getElementById('paymentStatus').innerHTML = '<span class="status-error">❌ Stok akun habis! Hubungi admin.</span>';
-                        return false;
-                    }
-                    
-                    // Tandai akun sebagai terpakai
-                    const usedAccount = markAccountAsUsed(product.code, account.id, customerData);
-                    
-                    // Kirim email ke customer
-                    await sendAccountEmail(customerData, product, usedAccount);
-                    
-                    // Simpan transaksi
-                    const transaction = {
-                        id: transactionId,
-                        product: product,
-                        customer: customerData,
-                        amount: product.price,
-                        accountEmail: usedAccount.email,
-                        accountPassword: usedAccount.password,
-                        status: 'success',
-                        emailSent: true,
-                        createdAt: new Date().toISOString()
-                    };
-                    transactions.push(transaction);
-                    localStorage.setItem('nauu_transactions', JSON.stringify(transactions));
-                    updateStats();
-                    renderTransactionHistory();
-                    
-                    // Tampilkan akun di modal
-                    displayAccount(usedAccount);
-                    
-                    document.getElementById('paymentStatus').innerHTML = `
-                        <div class="status-success">
-                            <i class="fas fa-check-circle"></i> ✅ Pembayaran Berhasil! 🎉
-                        </div>
-                    `;
-                    document.getElementById('checkPaymentBtn').disabled = true;
-                    
-                    // Tutup modal setelah 3 detik
-                    setTimeout(() => {
-                        closeModal();
-                        Swal.fire({
-                            title: '🎀 Pembelian Berhasil!',
-                            html: `
-                                <strong>${product.name}</strong><br><br>
-                                <div style="background: #1a152a; padding: 1rem; border-radius: 1rem; text-align: left;">
-                                    <strong>📧 Email:</strong><br>
-                                    <code style="font-size: 0.8rem;">${usedAccount.email}</code><br><br>
-                                    <strong>🔑 Password:</strong><br>
-                                    <code style="font-size: 0.8rem;">${usedAccount.password}</code>
-                                </div>
-                                <br>
-                                <small>💖 Cek email Anda juga ya!</small>
-                                <br><br>
-                                <small>📞 Butuh bantuan? Hubungi CS: +62 851-6641-3821</small>
-                            `,
-                            icon: 'success',
-                            confirmButtonColor: '#ff1493'
-                        });
-                    }, 2000);
-                    
-                    return true;
-                } else {
-                    // Masih pending
-                    document.getElementById('paymentStatus').innerHTML = '<span class="status-pending">⏳ Menunggu pembayaran... Scan QRIS di atas</span>';
-                    return false;
-                }
-            } catch (error) {
-                console.error('Error checking payment:', error);
-                document.getElementById('paymentStatus').innerHTML = '<span class="status-error">❌ Gagal mengecek status</span>';
+        function deliverAccount(customerData, product) {
+            const account = getAvailableAccount(product.code);
+            if (!account) {
+                Swal.fire('Error', 'Stok akun habis!', 'error');
                 return false;
             }
+            
+            const usedAccount = markAccountAsUsed(product.code, account.id, customerData);
+            sendAccountEmail(customerData, product, usedAccount);
+            
+            // Simpan transaksi
+            const transaction = {
+                id: 'TRX-' + Date.now(),
+                product: product,
+                customer: customerData,
+                amount: product.price,
+                accountEmail: usedAccount.email,
+                accountPassword: usedAccount.password,
+                status: 'success',
+                createdAt: new Date().toISOString()
+            };
+            transactions.push(transaction);
+            localStorage.setItem('nauu_transactions', JSON.stringify(transactions));
+            updateStats();
+            renderTransactionHistory();
+            
+            return usedAccount;
+        }
+        
+        // ==================== QRIS SIMULATION ====================
+        function generateSimulatedQRIS(amount) {
+            // Generate random transaction ID
+            const transactionId = 'QRIS-' + Date.now() + '-' + Math.random().toString(36).substr(2, 8);
+            
+            // Generate QR code data (simulasi)
+            const qrData = `SIMULASI_QRIS_${transactionId}_${amount}`;
+            
+            return {
+                status: 200,
+                data: {
+                    qr_string: qrData,
+                    transactionId: transactionId,
+                    originalAmount: amount,
+                    totalAmount: amount,
+                    message: "Simulasi QRIS - Scan untuk demo"
+                }
+            };
+        }
+        
+        function displayQRIS(data, amount) {
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = '';
+            
+            const qrString = data.data?.qr_string || data.qr_string;
+            const transactionId = data.data?.transactionId || data.transactionId;
+            
+            if (qrString) {
+                try {
+                    new QRCode(qrcodeDiv, {
+                        text: qrString,
+                        width: 220,
+                        height: 220,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff"
+                    });
+                } catch(e) {
+                    qrcodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(qrString)}">`;
+                }
+                document.getElementById('qrisAmount').innerHTML = `Rp ${amount.toLocaleString()}`;
+            }
+            return transactionId;
         }
         
         function displayAccount(account) {
@@ -1367,38 +1120,27 @@ Email: support@nauustore.com`;
         function renderProducts() {
             const container = document.getElementById('productsContainer');
             if (!products.length) {
-                container.innerHTML = '<div style="text-align: center; grid-column: 1/-1; padding: 3rem;">✨ Belum ada produk ✨</div>';
+                container.innerHTML = '<div style="text-align: center; padding: 3rem;">✨ Belum ada produk ✨</div>';
                 return;
             }
             
             container.innerHTML = products.map((product, index) => {
                 let stockText = `💖 Stok: ${product.stock}`;
-                let badgeText = '';
-                if (product.stock <= 0) {
-                    stockText = '💔 HABIS';
-                    badgeText = 'HABIS';
-                } else if (product.stock <= 3) {
-                    badgeText = '🔥 LIMITED';
-                } else {
-                    badgeText = '✨ READY';
-                }
+                let badgeText = product.stock <= 0 ? 'HABIS' : (product.stock <= 2 ? '🔥 LIMITED' : '✨ READY');
                 
                 return `
                     <div class="product-card">
-                        ${badgeText ? `<div class="product-badge">${badgeText}</div>` : ''}
+                        <div class="product-badge">${badgeText}</div>
                         <div class="product-image-placeholder">
                             <i class="fas ${product.icon || 'fa-mobile-alt'} fa-3x"></i>
                         </div>
                         <div class="product-info">
                             <h3 class="product-title">${escapeHtml(product.name)}</h3>
-                            <p class="product-description">${escapeHtml(product.desc || 'Premium app ready')}</p>
+                            <p class="product-description">${escapeHtml(product.desc)}</p>
                             <div class="product-features">
-                                ${(product.features || []).slice(0, 3).map(f => `<span class="feature-tag">✨ ${escapeHtml(f)}</span>`).join('')}
+                                ${product.features.map(f => `<span class="feature-tag">✨ ${escapeHtml(f)}</span>`).join('')}
                             </div>
-                            <div class="product-price">
-                                Rp ${(product.price || 0).toLocaleString()}
-                                <small>/akun</small>
-                            </div>
+                            <div class="product-price">Rp ${product.price.toLocaleString()} <small>/akun</small></div>
                             <span class="stock-badge"><i class="fas ${product.stock > 0 ? 'fa-heart' : 'fa-heart-broken'}"></i> ${stockText}</span>
                             <button class="btn-buy" onclick="openCheckout(${index})" ${product.stock <= 0 ? 'disabled' : ''}>
                                 <i class="fas fa-shopping-cart"></i> Beli Sekarang
@@ -1423,9 +1165,9 @@ Email: support@nauustore.com`;
                         <strong style="color:#ff69b4;">${escapeHtml(t.product.name)}</strong><br>
                         <small>${new Date(t.createdAt).toLocaleString()}</small>
                     </div>
-                    <div style="text-align: right;">
+                    <div>
                         Rp ${t.amount.toLocaleString()}<br>
-                        <span class="status-success"><i class="fas fa-check-circle"></i> Sukses</span>
+                        <span class="status-success">✅ Sukses</span>
                     </div>
                 </div>
             `).join('');
@@ -1447,7 +1189,7 @@ Email: support@nauustore.com`;
                     <div>
                         <strong style="color: #ff69b4;">${escapeHtml(currentProduct.name)}</strong><br>
                         Harga: <span style="color: #ff69b4;">Rp ${currentProduct.price.toLocaleString()}</span><br>
-                        <small>💖 Akun akan dikirim ke email setelah pembayaran</small>
+                        <small>💖 Akun akan dikirim setelah pembayaran</small>
                     </div>
                 </div>
             `;
@@ -1482,70 +1224,59 @@ Email: support@nauustore.com`;
                 return;
             }
             
-            Swal.fire({ 
-                title: 'Memproses...', 
-                text: 'Membuat QRIS pembayaran', 
-                didOpen: () => Swal.showLoading(), 
-                allowOutsideClick: false 
-            });
+            // Generate QRIS simulasi
+            const qrisResult = generateSimulatedQRIS(currentProduct.price);
+            const transactionId = displayQRIS(qrisResult, currentProduct.price);
             
-            try {
-                // Generate QRIS via API
-                const qrisResult = await generateQRIS(currentProduct.price);
-                Swal.close();
+            currentTransaction = {
+                transactionId: transactionId,
+                customer: customerData,
+                product: currentProduct,
+                amount: currentProduct.price
+            };
+            
+            document.getElementById('checkoutForm').style.display = 'none';
+            document.getElementById('qrisDisplay').style.display = 'block';
+            document.getElementById('paymentStatus').innerHTML = '<span class="status-pending">🌸 Scan QRIS atau klik "Simulasi Pembayaran" untuk demo</span>';
+        });
+        
+        // Simulate payment button
+        document.getElementById('simulatePaymentBtn')?.addEventListener('click', () => {
+            if (currentTransaction) {
+                // Deliver account
+                const usedAccount = deliverAccount(currentTransaction.customer, currentTransaction.product);
                 
-                // Cek apakah QRIS berhasil digenerate
-                if (qrisResult.status === 200 || qrisResult.data?.qr_string) {
-                    const transactionId = displayQRIS(qrisResult, currentProduct.price);
+                if (usedAccount) {
+                    displayAccount(usedAccount);
+                    document.getElementById('paymentStatus').innerHTML = '<span class="status-success">✅ Pembayaran Berhasil! Akun telah dikirim.</span>';
+                    document.getElementById('simulatePaymentBtn').disabled = true;
+                    document.getElementById('checkPaymentBtn').disabled = true;
                     
-                    if (!transactionId) {
-                        throw new Error('Gagal mendapatkan ID transaksi');
-                    }
-                    
-                    // Simpan data transaksi
-                    currentTransaction = { 
-                        transactionId: transactionId, 
-                        customer: customerData, 
-                        product: currentProduct 
-                    };
-                    
-                    // Tampilkan QRIS
-                    document.getElementById('checkoutForm').style.display = 'none';
-                    document.getElementById('qrisDisplay').style.display = 'block';
-                    document.getElementById('paymentStatus').innerHTML = '<span class="status-pending">🌸 Scan QRIS di atas untuk menyelesaikan pembayaran</span>';
-                    
-                    // Mulai cek status setiap 5 detik
-                    if (statusInterval) clearInterval(statusInterval);
-                    statusInterval = setInterval(async () => {
-                        await checkPaymentAndDeliver(transactionId, customerData, currentProduct);
-                    }, 5000);
-                    
-                    // Timeout setelah 10 menit
                     setTimeout(() => {
-                        if (currentTransaction) {
-                            clearInterval(statusInterval);
-                            document.getElementById('paymentStatus').innerHTML = '<span class="status-error">⏰ Waktu pembayaran habis. Silakan coba lagi.</span>';
-                        }
-                    }, 600000);
-                    
-                } else {
-                    throw new Error(qrisResult.message || 'Gagal generate QRIS');
+                        closeModal();
+                        Swal.fire({
+                            title: '🎀 Pembelian Berhasil!',
+                            html: `
+                                <strong>${currentTransaction.product.name}</strong><br><br>
+                                <div style="background: #1a152a; padding: 1rem; border-radius: 1rem; text-align: left;">
+                                    <strong>📧 Email:</strong><br>
+                                    <code>${usedAccount.email}</code><br><br>
+                                    <strong>🔑 Password:</strong><br>
+                                    <code>${usedAccount.password}</code>
+                                </div>
+                                <br>
+                                <small>💖 Cek email Anda juga ya!</small>
+                            `,
+                            icon: 'success',
+                            confirmButtonColor: '#ff1493'
+                        });
+                    }, 1500);
                 }
-            } catch (err) {
-                Swal.close();
-                Swal.fire('Error', err.message || 'Gagal memproses pembayaran', 'error');
-                console.error('Checkout error:', err);
             }
         });
         
-        document.getElementById('checkPaymentBtn')?.addEventListener('click', async () => {
-            if (currentTransaction && currentTransaction.transactionId) {
-                await checkPaymentAndDeliver(
-                    currentTransaction.transactionId, 
-                    currentTransaction.customer, 
-                    currentTransaction.product
-                );
-            }
+        document.getElementById('checkPaymentBtn')?.addEventListener('click', () => {
+            document.getElementById('paymentStatus').innerHTML = '<span class="status-pending">⏳ Silakan klik tombol "Simulasi Pembayaran" untuk demo</span>';
         });
         
         function closeModal() {
@@ -1563,13 +1294,7 @@ Email: support@nauustore.com`;
         window.copyToClipboard = function(elementId) {
             const text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text);
-            Swal.fire({
-                title: 'Copied!',
-                text: 'Berhasil disalin ke clipboard',
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false
-            });
+            Swal.fire({ title: 'Copied!', text: 'Berhasil disalin', icon: 'success', timer: 1500, showConfirmButton: false });
         };
         
         function escapeHtml(str) {
@@ -1579,21 +1304,6 @@ Email: support@nauustore.com`;
         
         // Initialize
         loadData();
-        
-        // Test API connection on load
-        async function testAPIConnection() {
-            try {
-                const testResult = await generateQRIS(1000);
-                if (testResult.status === 200 || testResult.data?.qr_string) {
-                    console.log('✅ API QRIS connected successfully');
-                } else {
-                    console.warn('⚠️ API QRIS response:', testResult);
-                }
-            } catch (err) {
-                console.error('❌ API QRIS connection failed:', err);
-            }
-        }
-        testAPIConnection();
     </script>
 </body>
 </html>
